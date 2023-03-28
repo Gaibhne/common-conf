@@ -1,0 +1,25 @@
+---
+# tasks file for roles/bash
+
+- name: Check out the git bash prompt repo
+  ansible.builtin.git:
+    repo: https://github.com/magicmonty/bash-git-prompt.git
+    dest: .bash-git-prompt
+    single_branch: true
+    version: master
+    depth: 1
+
+# NOTE: Yaml requires escaping backslashes in double quotes but not in single quotes
+- name: Add bash git prompt to .bashrc
+  ansible.builtin.blockinfile:
+    block: |
+      if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+          GIT_PROMPT_ONLY_IN_REPO=1
+          GIT_PROMPT_SHOW_UPSTREAM=1
+          GIT_PROMPT_SHOW_UNTRACKED_FILES=all
+          GIT_PROMPT_THEME=Solarized
+          source $HOME/.bash-git-prompt/gitprompt.sh
+      fi
+    path: .bashrc
+    backup: yes
+    validate: bash -n %s

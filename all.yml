@@ -1,0 +1,4 @@
+- name: Apply all roles
+  hosts: all
+  roles:
+    - bash
