@@ -20,6 +20,7 @@
           GIT_PROMPT_THEME=Solarized
           source $HOME/.bash-git-prompt/gitprompt.sh
       fi
-    path: .bashrc
+    path: ~/.bashrc
     backup: yes
     validate: bash -n %s
+
