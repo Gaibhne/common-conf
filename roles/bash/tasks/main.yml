@@ -38,3 +38,13 @@
     - { name: 'HISTSIZE=-1', regex: 'HISTSIZE='}
     - { name: 'HISTTIMEFORMAT="%F %T "', regex: 'HISTTIMEFORMAT='}
     - { name: 'shopt -s histappend', regex: 'shopt -s histappend'}
+
+- name: 'Add various bash aliases to .bashrc'
+  ansible.builtin.lineinfile:
+    dest: '~/.bashrc'
+    create: true
+    mode: '0644'
+    line: 'alias {{ item.alias }}="{{ item.command }}"'
+    regexp: '^alias {{ item.alias }}='
+  loop:
+    - { alias: 'll', command: 'ls -alshF' }
