@@ -1,5 +1,7 @@
-- name: Apply all roles
-  hosts: all
+---
+
+- name: 'Apply all roles'
+  hosts: 'all'
   roles:
-    - bash
-    - git
+    - 'bash'
+    - 'git'
