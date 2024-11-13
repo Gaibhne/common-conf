@@ -10,6 +10,7 @@
     - { name: 'a', value: 'commit --amend --no-edit' }
     - { name: 'co', value: 'checkout' }
     - { name: 'cob', value: 'checkout -b' }
-    - { name: 'l', value: 'log --oneline' }
+    - { name: 'l', value: 'log --all --decorate --graph --oneline --pretty=format:''%C(auto)%h%Creset -%C(auto)%d%Creset %s%Creset - %C(auto)%cn %Cgreen(%cr)%Creset'' -10' }
     - { name: 'm', value: 'checkout main' }
     - { name: 'pfl', value: 'push --force-with-lease' }
+    - { name: 'aliases', value: 'config --get-regexp ''^alias\.''' }
