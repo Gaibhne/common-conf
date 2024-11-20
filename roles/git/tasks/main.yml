@@ -1,16 +1,80 @@
 ---
 # tasks file for roles/git
 
+- name: Read all global values
+  community.general.git_config:
+    scope: global
+    list_all: true
+  register: config_values
+
+- name: 'Print result of previous command'
+  ansible.builtin.debug:
+    var: config_values
+
+- name: 'Specify various settings in ~/.gitconfig'
+  community.general.git_config:
+    name: '{{ item.group }}.{{ item.name }}'
+    scope: 'global'
+    value: '{{ item.value }}'
+  loop:
+    - { group: 'core', name: 'pager', value: 'delta' }
+    - { group: 'delta', name: 'features', value: 'line-numbers decorations' }
+    - { group: 'delta', name: 'line-numbers', value: 'true' }
+    - { group: 'delta.decorations', name: 'minus-style', value: 'red bold normal' }
+    - { group: 'delta.decorations', name: 'plus-style', value: 'green bold normal' }
+    - { group: 'delta.decorations', name: 'minus-emph-style', value: 'white bold red' }
+    - { group: 'delta.decorations', name: 'minus-non-emph-style', value: 'red bold normal' }
+    - { group: 'delta.decorations', name: 'plus-emph-style', value: 'white bold green' }
+    - { group: 'delta.decorations', name: 'plus-non-emph-style', value: 'green bold normal' }
+    - { group: 'delta.decorations', name: 'file-style', value: 'yellow bold none' }
+    - { group: 'delta.decorations', name: 'file-decoration-style', value: 'yellow box' }
+    - { group: 'delta.decorations', name: 'hunk-header-style', value: 'magenta bold' }
+    - { group: 'delta.decorations', name: 'hunk-header-decoration-style', value: 'magenta box' }
+    - { group: 'delta.decorations', name: 'minus-empty-line-marker-style', value: 'normal normal' }
+    - { group: 'delta.decorations', name: 'plus-empty-line-marker-style', value: 'normal normal' }
+    - { group: 'delta.decorations', name: 'line-numbers-right-format', value: '{np:^4}│ ' }
+
+    - { group: 'diff', name: 'tool', value: 'vimdiff' }
+    - { group: 'difftool', name: 'prompt', value: 'false' }
+
+
 - name: 'Add aliases to ~/.gitconfig'
   community.general.git_config:
     name: 'alias.{{ item.name }}'
     scope: 'global'
     value: '{{ item.value }}'
   loop:
+    - { name: 'aliases', value: 'config --get-regexp ''^alias\.''' }
+
     - { name: 'a', value: 'commit --amend --no-edit' }
+
+    - { name: 'as', value: '!f() { git rebase --interactive --autosquash $1 && git l; }; f' }
+
+    - { name: 'ap', value: 'add -p' }
+    - { name: 'anp', value: '!git add -N $0 && git add -p' }
+
+    - { name: 'c', value: 'commit -m' }
+    - { name: 'ca', value: 'commit --amend' }
+    - { name: 'cf', value: 'commit --fixup' }
+
+    - { name: 'cfx', value: '!git log --decorate --oneline --pretty=format:''%C(auto)%h%Creset -%C(auto)%d%Creset %s%Creset - %C(auto)%cn %Cgreen(%cr)%Creset'' -50 --no-merges --color=always | fzf --ansi --reverse | cut -c -7 | xargs -o git commit --fixup' }
+
+    - { name: 'cb', value: 'checkout -' }
     - { name: 'co', value: 'checkout' }
     - { name: 'cob', value: 'checkout -b' }
+
+    - { name: 'cp', value: 'cherry-pick' }
+
     - { name: 'l', value: 'log --all --decorate --graph --oneline --pretty=format:''%C(auto)%h%Creset -%C(auto)%d%Creset %s%Creset - %C(auto)%cn %Cgreen(%cr)%Creset'' -10' }
+
     - { name: 'm', value: 'checkout main' }
-    - { name: 'pfl', value: 'push --force-with-lease' }
-    - { name: 'aliases', value: 'config --get-regexp ''^alias\.''' }
+    - { name: 'mp', value: '!git checkout main && git pull' }
+    - { name: 'mrb', value: '!git fetch origin main && git rebase origin/main' }
+
+    - { name: 'pl', value: 'pull --recurse-submodules' }
+
+    - { name: 'ps', value: 'push' }
+    - { name: 'psfl', value: 'push --force-with-lease' }
+
+    - { name: 's', value: 'status' }
+    - { name: 'sb', value: 'status -sbu' }
