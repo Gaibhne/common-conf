@@ -53,6 +53,11 @@
     - { name: 'ap', value: 'add -p' }
     - { name: 'anp', value: '!git add -N $0 && git add -p' }
 
+    - { name: 'bc', value: '!git fetch --all --prune && git remote set-head origin -a && git branch --omit-empty --no-merged main --format=''%(if:equals=[gone])%(upstream:track)%(then)git branch -d %(refname:short)     # missing tracking %(end)'' && git branch --omit-empty --format=''%(if)%(upstream:remoteref)%(then)%(else)Local only: %(refname:short)%(end)'' && echo -n && git branch --omit-empty --merged main --format=''%(if:notequals=main)%(refname:short)%(then)git branch -d %(refname:short)     # merged%(end)''' }
+    - { name: 'bd', value: 'branch -d' }
+    - { name: 'bdd', value: 'branch -D' }
+    - { name: 'bl', value: 'branch --list' }
+
     - { name: 'c', value: 'commit -m' }
     - { name: 'ca', value: 'commit --amend' }
     - { name: 'cf', value: 'commit --fixup' }
@@ -65,7 +70,11 @@
 
     - { name: 'cp', value: 'cherry-pick' }
 
-    - { name: 'l', value: 'log --all --decorate --graph --oneline --pretty=format:''%C(auto)%h%Creset -%C(auto)%d%Creset %s%Creset - %C(auto)%cn %Cgreen(%cr)%Creset'' -10' }
+    - { name: 'df', value: '!f() { git diff ...${1}; }; f' }
+    - { name: 'dc', value: '!f() { git log --no-merges ${1} ^main; }; f' }
+
+    - { name: 'l', value: 'log --decorate --graph --oneline --pretty=format:''%C(auto)%h%Creset -%C(auto)%d%Creset %s%Creset - %C(auto)%cn %Cgreen(%cr)%Creset'' -10' }
+    - { name: 'la', value: 'log --all --decorate --graph --oneline --pretty=format:''%C(auto)%h%Creset -%C(auto)%d%Creset %s%Creset - %C(auto)%cn %Cgreen(%cr)%Creset'' -10' }
 
     - { name: 'm', value: 'checkout main' }
     - { name: 'mp', value: '!git checkout main && git pull' }
@@ -74,7 +83,11 @@
     - { name: 'pl', value: 'pull --recurse-submodules' }
 
     - { name: 'ps', value: 'push' }
-    - { name: 'psfl', value: 'push --force-with-lease' }
+    - { name: 'pfl', value: 'push --force-with-lease' }
+    - { name: 'apfl', value: '!git a && git pfl' }
+
+    - { name: 'ra', value: 'rebase --abort' }
+    - { name: 'rc', value: 'rebase --continue' }
 
     - { name: 's', value: 'status' }
     - { name: 'sb', value: 'status -sbu' }
