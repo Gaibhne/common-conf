@@ -63,7 +63,7 @@
     - { name: 'ca', value: 'commit --amend' }
     - { name: 'cf', value: 'commit --fixup' }
 
-    - { name: 'cfx', value: '!git log --decorate --oneline --pretty=format:''%C(auto)%h%Creset -%C(auto)%d%Creset %s%Creset - %C(auto)%cn %Cgreen(%cr)%Creset'' -50 --no-merges --color=always | fzf --ansi --reverse | cut -c -7 | xargs -o git commit --fixup' }
+    - { name: 'cfx', value: '!git log --decorate --oneline --pretty=format:''%C(auto)%h%Creset -%C(auto)%d%Creset %s%Creset - %C(auto)%aN %Cgreen(%cr)%Creset'' -50 --no-merges --color=always | fzf --ansi --reverse | cut -c -7 | xargs -o git commit --fixup' }
 
     - { name: 'cb', value: 'checkout -' }
     - { name: 'co', value: 'checkout' }
@@ -74,8 +74,8 @@
     - { name: 'df', value: '!f() { git diff ...${1}; }; f' }
     - { name: 'dc', value: '!f() { git log --no-merges ${1} ^main; }; f' }
 
-    - { name: 'l', value: 'log --decorate --graph --oneline --pretty=format:''%C(auto)%h%Creset -%C(auto)%d%Creset %s%Creset - %C(auto)%cn %Cgreen(%cr)%Creset'' -10' }
-    - { name: 'la', value: 'log --all --decorate --graph --oneline --pretty=format:''%C(auto)%h%Creset -%C(auto)%d%Creset %s%Creset - %C(auto)%cn %Cgreen(%cr)%Creset'' -10' }
+    - { name: 'l', value: 'log --decorate --graph --oneline --pretty=format:''%C(auto)%h%Creset -%C(auto)%d%Creset %s%Creset - %C(auto)%aN %Cgreen(%cr)%Creset'' -10' }
+    - { name: 'la', value: 'log --all --decorate --graph --oneline --pretty=format:''%C(auto)%h%Creset -%C(auto)%d%Creset %s%Creset - %C(auto)%aN %Cgreen(%cr)%Creset'' -10' }
 
     - { name: 'm', value: 'checkout main' }
     - { name: 'mp', value: '!git checkout main && git pull' }
