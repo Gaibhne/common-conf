@@ -92,3 +92,6 @@
 
     - { name: 's', value: 'status' }
     - { name: 'sb', value: 'status -sbu' }
+
+# StashGrep - git stashgrep -i <regexp> - via https://stackoverflow.com/questions/42555410/is-it-possible-to-search-through-git-stash-items
+    - { name: 'sg', value: '!f() { for i in `git stash list --format="%gd"` ; do git stash show -p $i | grep -H --label="$i" "$@" ; done ; }; f' }
