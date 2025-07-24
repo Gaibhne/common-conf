@@ -88,7 +88,7 @@
     - { name: 'apfl', value: '!git a && git pfl' }
 
     - { name: 'ra', value: 'rebase --abort' }
-    - { name: 'rc', value: 'rebase --continue' }
+    - { name: 'rc', value: '!GIT_EDITOR=true git rebase --continue' }
 
     - { name: 's', value: 'status' }
     - { name: 'sb', value: 'status -sbu' }
