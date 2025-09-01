@@ -71,7 +71,10 @@
 
     - { name: 'cp', value: 'cherry-pick' }
 
-    - { name: 'df', value: '!f() { git diff ...${1}; }; f' }
+    # 'Branch DiFf' - shows the difference between the given branch/commit and the branching point from main
+    - { name: 'bdf', value: '!f() { git diff main...${1}; }; f' }
+    # 'Commit DiFf' - shows the diff from the commit
+    - { name: 'cdf', value: '!f() { git diff ${1}~ ${1}; }; f' }
     - { name: 'dc', value: '!f() { git log --no-merges ${1} ^main; }; f' }
 
     - { name: 'l', value: 'log --decorate --graph --oneline --pretty=format:''%C(auto)%h%Creset -%C(auto)%d%Creset %s%Creset - %C(auto)%aN %Cgreen(%cr)%Creset'' -10' }
