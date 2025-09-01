@@ -52,7 +52,7 @@
 
     - { name: 'ap', value: 'add -p' }
     - { name: 'an', value: 'add -N' }
-    - { name: 'anp', value: '!git add -N $0 && git add -p' }
+    - { name: 'anp', value: '!git add -N ${1} && git add -p' }
 
     - { name: 'bc', value: '!git fetch --all --prune && git remote set-head origin -a && git branch --omit-empty --no-merged main --format=''%(if:equals=[gone])%(upstream:track)%(then)git branch -d %(refname:short)     # missing tracking %(end)'' && git branch --omit-empty --format=''%(if)%(upstream:remoteref)%(then)%(else)Local only: %(refname:short)%(end)'' && echo -n && git branch --omit-empty --merged main --format=''%(if:notequals=main)%(refname:short)%(then)git branch -d %(refname:short)     # merged%(end)''' }
     - { name: 'bd', value: 'branch -d' }
