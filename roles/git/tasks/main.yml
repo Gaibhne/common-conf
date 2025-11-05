@@ -81,7 +81,7 @@
     - { name: 'la', value: 'log --all --decorate --graph --oneline --pretty=format:''%C(auto)%h%Creset -%C(auto)%d%Creset %s%Creset - %C(auto)%aN %Cgreen(%cr)%Creset'' -10' }
 
     - { name: 'm', value: 'checkout main' }
-    - { name: 'mp', value: '!git checkout main && git pull' }
+    - { name: 'mp', value: '!git checkout main && git fetch --all --prune && git pull' }
     - { name: 'mrb', value: '!git fetch origin main && git rebase origin/main' }
 
     - { name: 'pl', value: 'pull --recurse-submodules' }
