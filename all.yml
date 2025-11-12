@@ -2,6 +2,8 @@
 
 - name: 'Apply all roles'
   hosts: 'all'
+  vars:
+    ansible_python_interpreter: '/usr/bin/python3'
   roles:
     - 'bash'
     - 'git'
