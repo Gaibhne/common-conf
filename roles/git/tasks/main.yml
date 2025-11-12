@@ -2,14 +2,13 @@
 # tasks file for roles/git
 
 - name: Read all global values
-  community.general.git_config:
+  community.general.git_config_info:
     scope: global
-    list_all: true
   register: config_values
 
 - name: 'Print result of previous command'
   ansible.builtin.debug:
-    var: config_values
+    var: config_values.config_values
 
 - name: 'Specify various settings in ~/.gitconfig'
   community.general.git_config:
