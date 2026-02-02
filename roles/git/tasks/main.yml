@@ -19,6 +19,7 @@
     - { group: 'core', name: 'pager', value: 'delta' }
     - { group: 'delta', name: 'features', value: 'line-numbers decorations' }
     - { group: 'delta', name: 'line-numbers', value: 'true' }
+    - { group: 'push', name: 'autoSetupRemote', value: 'true' }
     - { group: 'delta.decorations', name: 'minus-style', value: 'red bold normal' }
     - { group: 'delta.decorations', name: 'plus-style', value: 'green bold normal' }
     - { group: 'delta.decorations', name: 'minus-emph-style', value: 'white bold red' }
