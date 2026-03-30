@@ -36,6 +36,7 @@
     - { group: 'diff', name: 'tool', value: 'vimdiff' }
     - { group: 'difftool', name: 'prompt', value: 'false' }
 
+    - { group: 'pull', name: 'ff', value: 'only' }
 
 - name: 'Specify buggy setting in ~/.gitconfig - always triggers an incorrect ''changed'' status'
   community.general.git_config:
@@ -91,7 +92,7 @@
     - { name: 'mp', value: '!git checkout main && git fetch --all --prune && git pull' }
     - { name: 'mrb', value: '!git fetch origin main && git rebase origin/main' }
 
-    - { name: 'pl', value: 'pull --recurse-submodules' }
+    - { name: 'pl', value: 'pull --recurse-submodules --rebase' }
 
     - { name: 'ps', value: 'push' }
     - { name: 'pfl', value: 'push --force-with-lease' }
