@@ -75,6 +75,10 @@
     - { name: 'cb', value: 'checkout -' }
     - { name: 'co', value: 'checkout' }
     - { name: 'cob', value: 'checkout -b' }
+    # Backs up current git branch status (committed only)
+    - { name: 'b', value: 'git cob backup/$(date +%Y-%m-%d_%H-%M) && git co -' }
+    # Backs up current git branch status (including uncommitted, doesn't work yet)
+    - { name: 'ba', value: 'git cob backup/$(date +%Y-%m-%d_%H-%M) && git co -' }
 
     - { name: 'cp', value: 'cherry-pick' }
 
