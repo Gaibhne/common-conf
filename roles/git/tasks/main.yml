@@ -32,11 +32,17 @@
     - { group: 'delta.decorations', name: 'hunk-header-decoration-style', value: 'magenta box' }
     - { group: 'delta.decorations', name: 'minus-empty-line-marker-style', value: 'normal normal' }
     - { group: 'delta.decorations', name: 'plus-empty-line-marker-style', value: 'normal normal' }
-    - { group: 'delta.decorations', name: 'line-numbers-right-format', value: '{np:^4}│ ' }
 
     - { group: 'diff', name: 'tool', value: 'vimdiff' }
     - { group: 'difftool', name: 'prompt', value: 'false' }
 
+
+- name: 'Specify buggy setting in ~/.gitconfig - always triggers an incorrect ''changed'' status'
+  community.general.git_config:
+    name: 'delta.decorations.line-numbers-right-format'
+    scope: 'global'
+    value: '{np:^4}│ '
+  changed_when: false
 
 - name: 'Add aliases to ~/.gitconfig'
   community.general.git_config:
