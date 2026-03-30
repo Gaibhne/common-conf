@@ -48,3 +48,4 @@
     regexp: '^alias {{ item.alias }}='
   loop:
     - { alias: 'll', command: 'ls -alshF' }
+    - { alias: 'nano', command: 'nano -W' }
