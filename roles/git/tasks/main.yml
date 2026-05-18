@@ -71,7 +71,7 @@
     - { name: 'ca', value: 'commit --amend' }
     - { name: 'cf', value: 'commit --fixup' }
 
-    - { name: 'cfx', value: '!git log --decorate --oneline --pretty=format:''%C(auto)%h%Creset -%C(auto)%d%Creset %s%Creset - %C(auto)%aN %Cgreen(%cr)%Creset'' -50 --no-merges --color=always | fzf --ansi --reverse | cut -c -7 | xargs -o git commit --fixup' }
+    - { name: 'cfx', value: '!FIXUP_COMMIT=$(git log --decorate --oneline --pretty=format:''%C(auto)%h%Creset -%C(auto)%d%Creset %s%Creset - %C(auto)%aN %Cgreen(%cr)%Creset'' -50 --no-merges --color=always | fzf --ansi --reverse | cut -c -7) && git commit --fixup $FIXUP_COMMIT && echo "Fixup target: $FIXUP_COMMIT"' }
 
     - { name: 'cb', value: 'checkout -' }
     - { name: 'co', value: 'checkout' }
