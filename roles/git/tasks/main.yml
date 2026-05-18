@@ -85,8 +85,8 @@
     - { name: 'cpa', value: 'cherry-pick --abort' }
     - { name: 'cpc', value: 'cherry-pick --continue' }
 
-    # 'Branch DiFf' - shows the difference between the given branch/commit and the branching point from main
-    - { name: 'bdf', value: '!f() { git diff main...${1}; }; f' }
+    # Show commits not merged into main, minus merge commits
+    - { name: 'bdf', value: '!f() { git log --graph --left-right --cherry-pick --no-merges --oneline ${1} ^main; }; f' } # x
     # 'Commit DiFf' - shows the diff from the commit
     - { name: 'cdf', value: '!f() { git diff ${1}~ ${1}; }; f' }
     - { name: 'sdf', value: '!git diff --staged' }
