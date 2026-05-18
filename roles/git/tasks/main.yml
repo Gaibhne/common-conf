@@ -55,7 +55,7 @@
 
     - { name: 'a', value: 'commit --amend --no-edit' }
 
-    - { name: 'as', value: '!f() { git rebase --interactive --autosquash $1 && git l; }; f' }
+    - { name: 'as', value: '!f() { git rebase --interactive --autosquash $1~1 && git l; }; f' }
 
     - { name: 'ap', value: 'add -p' }
     - { name: 'an', value: 'add -N' }
