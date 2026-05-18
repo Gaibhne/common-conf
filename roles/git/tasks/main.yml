@@ -65,7 +65,7 @@
     - { name: 'bc', value: '!git fetch --all --prune && git remote set-head origin -a && git branch --omit-empty --no-merged main --format=''%(if:equals=[gone])%(upstream:track)%(then)git bd %(refname:short)     # missing tracking, try `git bdf %(refname:short)` %(end)'' && git branch --omit-empty --format=''%(if)%(upstream:remoteref)%(then)%(else)Local only: %(refname:short)%(end)'' && echo -n && git branch --omit-empty --merged main --format=''%(if:notequals=main)%(refname:short)%(then)git bd %(refname:short)     # merged%(end)''' }
     - { name: 'bd', value: 'branch -d' }
     - { name: 'bdd', value: 'branch -D' }
-    - { name: 'bl', value: 'branch --list --all' }
+    - { name: 'bl', value: 'branch --list --all --sort=-committerdate' }
 
     - { name: 'c', value: 'commit -m' }
     - { name: 'ca', value: 'commit --amend' }
