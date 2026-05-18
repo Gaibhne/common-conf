@@ -82,6 +82,8 @@
     - { name: 'ba', value: '!f() { git cob backup/$(date +%Y-%m-%d_%H-%M) && git co -; }; f' }
 
     - { name: 'cp', value: 'cherry-pick' }
+    - { name: 'cpa', value: 'cherry-pick --abort' }
+    - { name: 'cpc', value: 'cherry-pick --continue' }
 
     # 'Branch DiFf' - shows the difference between the given branch/commit and the branching point from main
     - { name: 'bdf', value: '!f() { git diff main...${1}; }; f' }
